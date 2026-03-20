@@ -7,59 +7,37 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $reviews = Review::with(['game', 'user'])->latest()->get();
+        return view('welcome', compact('reviews'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Review $review)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Review $review)
     {
-        //
+        return view('reviews.edit', compact('review'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Review $review)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'score' => 'required|integer|min:0|max:10',
+        ]);
+
+        $review->update([
+            'title' => $request->title,
+            'description' => $request->description, // corrigido
+            'score' => $request->score,
+        ]);
+
+        return redirect('/')->with('success', 'Review atualizada!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Review $review)
     {
-        //
+        $review->delete();
+        return redirect('/')->with('success', 'Review excluída com sucesso!');
     }
 }
