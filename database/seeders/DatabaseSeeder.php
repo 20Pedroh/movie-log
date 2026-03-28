@@ -43,6 +43,27 @@ class DatabaseSeeder extends Seeder
             'release_date' => '2022-02-25',
         ]);
 
+        $game4 = Game::create([
+            'title' => 'Monster Hunter: World',
+            'description' => 'Caça épica de monstros com cooperação e estratégia',
+            'cover_image' => 'https://cdn.cloudflare.steamstatic.com/steam/apps/582010/header.jpg',
+            'release_date' => '2018-01-26',
+        ]);
+
+        $game5 = Game::create([
+            'title' => 'Red Dead Redemption 2',
+            'description' => 'Uma narrativa profunda no velho oeste',
+            'cover_image' => 'https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg',
+            'release_date' => '2018-10-26',
+        ]);
+
+        $game6 = Game::create([
+            'title' => 'Hollow Knight',
+            'description' => 'Metroidvania desafiador com arte incrível',
+            'cover_image' => 'https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg',
+            'release_date' => '2017-02-24',
+        ]);
+
         // REVIEWS
         Review::create([
             'user_id' => $user->id,
@@ -65,6 +86,30 @@ class DatabaseSeeder extends Seeder
             'game_id' => $game3->id,
             'title' => 'Desafiador',
             'content' => 'Muito difícil, mas extremamente recompensador.',
+            'score' => 9,
+        ]);
+
+        Review::create([
+            'user_id' => $user->id,
+            'game_id' => $game4->id,
+            'title' => 'Simplesmente perfeito',
+            'content' => 'Combate profundo, monstros incríveis e coop muito divertido. Um dos melhores jogos que já joguei.',
+            'score' => 10,
+        ]);
+
+        Review::create([
+            'user_id' => $user->id,
+            'game_id' => $game5->id,
+            'title' => 'Experiência cinematográfica',
+            'content' => 'História emocionante e atenção absurda aos detalhes. Um jogo que marca.',
+            'score' => 10,
+        ]);
+
+        Review::create([
+            'user_id' => $user->id,
+            'game_id' => $game6->id,
+            'title' => 'Indie surpreendente',
+            'content' => 'Desafiador, bonito e com trilha sonora incrível. Vale cada minuto.',
             'score' => 9,
         ]);
     }
