@@ -41,13 +41,6 @@
 
     </section>
 
-    <!-- Mensagem de sucesso -->
-    @if(session('success'))
-    <div class="max-w-6xl mx-auto px-4 py-4 mb-6 bg-green-100 border border-green-400 text-green-700 rounded">
-        {{ session('success') }}
-    </div>
-    @endif
-
     <!-- GRID -->
     <div class="max-w-6xl mx-auto px-4 py-10">
 
@@ -169,6 +162,34 @@ document.querySelectorAll('.btn-delete').forEach(function(button) {
     });
 });
 </script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+
+        background: '#eff6ff',
+        color: '#1e40af',
+
+        customClass: {
+            popup: 'rounded-xl shadow-lg',
+            title: 'text-sm font-semibold'
+        },
+
+        showClass: {
+            popup: 'animate__animated animate__fadeInRight'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutRight'
+        }
+    });
+</script>
+@endif
 
 </body>
 </html>
