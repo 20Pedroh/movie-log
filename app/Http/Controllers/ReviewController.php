@@ -28,7 +28,7 @@ class ReviewController extends Controller
 
         $review->update([
             'title' => $request->title,
-            'description' => $request->description, // corrigido
+            'description' => $request->description,
             'score' => $request->score,
         ]);
 
