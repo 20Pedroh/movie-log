@@ -34,7 +34,7 @@
                class="w-full mb-3 p-2 border rounded"
                min="0" max="10">
 
-        <button class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
             Atualizar
         </button>
 

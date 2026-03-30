@@ -16,7 +16,6 @@
         <h1 class="text-xl font-bold">GameReviews</h1>
         <nav class="flex gap-6 text-sm">
             <a href="/" class="hover:text-primary-300">Home</a>
-            <a href="#" class="hover:text-primary-300">Games</a>
             <a href="#" class="hover:text-primary-300">Login</a>
         </nav>
     </div>

@@ -22,17 +22,13 @@ class ReviewController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'content' => 'required|string',
             'score' => 'required|integer|min:0|max:10',
         ]);
 
-        $review->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'score' => $request->score,
-        ]);
+        $review->update($request->only(['title', 'content', 'score']));
 
-        return redirect('/')->with('success', 'Review atualizada!');
+        return redirect()->route('home')->with('success', 'Review atualizada!');
     }
 
     public function destroy(Review $review)
