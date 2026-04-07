@@ -15,11 +15,19 @@ class ReviewController extends Controller
 
     public function edit(Review $review)
     {
+        if (auth()->id() !== $review->user_id) {
+            abort(403);
+        }
+
         return view('reviews.edit', compact('review'));
     }
 
     public function update(Request $request, Review $review)
     {
+        if (auth()->id() !== $review->user_id) {
+            abort(403);
+        }
+
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
@@ -33,7 +41,12 @@ class ReviewController extends Controller
 
     public function destroy(Review $review)
     {
+        if (auth()->id() !== $review->user_id) {
+            abort(403);
+        }
+
         $review->delete();
+
         return redirect('/')->with('success', 'Review excluída com sucesso!');
     }
 }
